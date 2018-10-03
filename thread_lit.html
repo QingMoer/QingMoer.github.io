@@ -1,0 +1,51 @@
+
+<!--{hook t_m_thread_list_1}-->
+	<li class="threads">
+		<!--{hook t_m_thread_list_2}-->
+		<a href="javascript:;" class="avatar">
+			{if !$v['top'] && $v['posts'] > 3 && !$v['state']}<span class="icon-fire badge badge-danger"></span>{/if}
+			{if $v['state']}<span class="icon-lock badge badge-z"></span>{/if}
+			{if $v['top']==2}<span class="badge badge-blue"  >顶</span>{elseif $v['top']==1}<span class="badgex badge-warning"  >顶</span>{/if}
+		</a>
+		
+	       <a href="{php HYBBS_URL('thread',$v['tid']);}" ><span class="userpx" s>{if $v['bid']=='5'}{$v.content}{else}{$v.title}{/if}</span></a>
+		</a>
+</li>
+<style media="screen" type="text/css">
+span.badge.badge-blue {
+    font-size: 12px;
+    width: 25px;
+    height: 17px;
+    line-height: 17px;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    position: initial;
+    right: 1px;
+}
+span.badgex.badge-warning {
+    font-size: 12px;
+    width: 25px;
+    height: 17px;
+    line-height: 17px;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    position: initial;
+    right: 1px;
+}
+span.userpx {
+    color: #333;
+    line-height: 20px;
+    font-size: 14px;
+}
+li.threads {
+    overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+}
+</style>
