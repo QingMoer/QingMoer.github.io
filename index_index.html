@@ -1,0 +1,231 @@
+{include h}
+{include index_header}
+  {if ($query=json_decode($query,true))}
+<!--{hook t_m_index_index_1}--> 
+<section class="body" id="index_body">
+<div style="padding-bottom: 5px;position: relative;">
+<!--{hook t_m_index_index_2}--> 
+<div class="jumbotron"  
+	style="
+    padding-top: 180px;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    color: inherit;
+    background-image: url({#WWW}View/tlmsu_wall/image/bg.gif);
+    background-size: cover;
+    margin: -50px 0px 0px 0px;
+	    text-align: center;
+    height: 320px;
+">
+		    
+		    <p>尊敬的用户 欢迎您加入 TLMSU 社区</p>
+		    <p class="bbplg"><a class="btn btn-primary btn-lg" role="button" href="{php HYBBS_URL('post')}">发帖</a></p>
+		    <p class="bbplg"><a class="btn btn-primary btn-lg" role="button" href="{#WWW}wall">表白</a></p>
+	
+	    </div>
+		<html>
+ <body>
+  {if ($query['code']==1)}
+  <nav class="profile-nav"> 
+   <button class="item" > <a href="{php HYBBS_URL('forum')}" class="txt">分类</a><!--<span class="num">7851</span>-->  </button> 
+   <!--<button class="item" > <a href="{php HYBBS_URL('post')}" class="txt">发帖</a><!--<span class="num">7851</span></button> --> 
+   <button class="item" > <a class="txt" href="{#WWW}" {if isset($_GET['HY_URL'][0])}{if $_GET['HY_URL'][0] != 'btime'}selected{/if}{/if}>{$_LANG['最新主题']}</a><!--<span class="num">7851</span>--> </button> 
+   <button class="item" > <a class="txt" href="{php HYBBS_URL('btime','');}" {if isset($_GET['HY_URL'][0])}{if $_GET['HY_URL'][0] == 'btime'}selected{/if}{/if}>{$_LANG['最新回复']}</a><!--<span class="num">7851</span>--> </button> 
+  </nav>
+  <ul class="bottom-ul" style="
+    /* width: 0; */
+    margin: 0;
+">
+			<li style="background: rgba(63,133,246,1);/* border-bottom-left-radius: 15px; */">
+				
+			</li>
+			<li style="background: rgba(235,66,52,1);">
+				
+			</li>
+			<li style="background: rgba(251,189,3,1);">
+				
+			</li>
+			<li style="background: rgba(63,133,246,1);">
+				
+			</li>
+			<li style="background: rgba(50,169,82,1);">
+				
+			</li>
+			<li style="background: rgba(235,66,52,1);/* border-bottom-right-radius: 15px; */">
+				
+			</li>
+		</ul>
+ </body>
+</html>
+ <html>
+ <head></head>
+ <body>
+  <div class="profile-apps">
+   <ul class="ui-list-view">
+    <li role="button" data-hook="mine-visitor" global-hot="main.entervisitorlist.{userTitle}">
+     <div class="rows">
+      <div class="col-l">
+       <i class="i-visitor"></i>
+      </div>
+      <div class="col-m">
+  {php $_SESSION['authcode']=true;} 
+	  <span class="badgebb">{$hy_count.user}</span> 人加入了&nbsp{$title}
+      </div>
+      <div class="col-r"></div>
+     </div></li>
+    <li role="button" data-hook="mine-gift" data-params="" data-ping="gift.entry">
+     <div class="rows">
+      <div class="col-l">
+       <i class="i-gift"></i>
+      </div>
+      <div class="col-m">
+       已经有<span class="badgebb">{$hy_count.thread}</span>条主题被发布
+      </div>
+      <div class="col-r"></div>
+     </div></li>
+    <li role="button" data-hook="global-link" data-params="#recentcontactors?res_uin=1678112882" global-hot="main.contactlist">
+     <div class="rows">
+      <div class="col-l">
+       <i class="i-recent"></i>
+      </div>
+      <div class="col-m">
+       注：发布后没有显示请等待一分钟数据缓存
+      </div>
+     </div></li>
+   </ul>
+  </div>
+ </body>
+</html>
+  <!--{hook t_m_index_index_3}--> 
+  <!--{hook t_m_index_index_6}--> 
+  <!--{hook t_m_index_index_7}--> 
+  <!--{hook tlms_m_index_index_80}-->
+	<!--{hook t_m_index_index_thread_list_top}--> 
+	<div class="zhiding">
+	<div class="zhidingx">
+	<h2 class="qzztbtt">全站置顶</h2>
+	</div>
+	<ul class="yopb" style=" font-size: 13px;padding: 10px;" >
+	{foreach $top_list as $v}
+	{include thread_lit}
+	{/foreach}
+		{else} 
+		{php exit($query['msg']);}
+		<!--{hook tlms_m_index_index_thread_void}-->
+</ul>
+	</div>
+	<ul class="bottom-ul">
+			<li style="background: rgb(235, 66, 52);/* border-bottom-left-radius: 15px; */">
+				
+			</li>
+			<li style="background: rgb(50, 169, 82);">
+				
+			</li>
+			<li style="background: rgb(63, 133, 246);">
+				
+			</li>
+			<li style="background: rgb(251, 189, 3);">
+				
+			</li>
+			<li style="background: rgb(235, 66, 52);">
+				
+			</li>
+			<li style="background: rgb(63, 133, 246);/* border-bottom-right-radius: 15px; */">
+				
+			</li>
+		</ul>
+<list id="index-list">
+  <!--ajax start-->
+	{foreach $thread_list as $v}
+	{include thread_list}
+	{/foreach}
+	<!--ajax end-->
+</list>	
+	<!--{hook t_m_index_index_thread_list_bottom}-->
+	
+  <div class="hy-box hy-bo-t" style="    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border: initial;
+    box-shadow: initial;">
+    <a href="{if $pageid==1}javascript:void(0);{else}{php HYBBS_URL($type,$pageid-1);}{/if}" class="hy-btn hy-btn-blu1 l {if $pageid==1}disabled{/if}">{$_LANG['上一页']}</a>
+    <span class="Select" style="    margin: 0 auto;">
+    <?php $tmp = ($hy_count['thread']%$conf['homelist']) ?(intval($hy_count['thread']/$conf['homelist'])+1) : intval($hy_count['thread']/$conf['homelist']) ; ?>
+      <select class="Select-input FormControl">
+        {for $i=($pageid-5 < 1) ? 1 : $pageid -5; $i< (($pageid + 5 > $tmp) ? $tmp+1 : $pageid + 5) ; $i++}
+          <option value="{php HYBBS_URL($type,$i);}" {if $pageid == $i}selected{/if}>第 {$i} 页</option>
+
+        {/for}
+      </select>
+          <script type="text/javascript">
+          $(".FormControl").change(function(){
+              window.location.href = $(this).val();
+          })
+          </script>
+          
+    </span>
+    <a href="{if $pageid==$page_count}javascript:void(0);{else}{php HYBBS_URL($type,$pageid+1);}{/if}" class="hy-btn hy-btn-blu1 r {if $pageid==$page_count}disabled{/if}">{$_LANG['下一页']}</a>
+    <div style="clear: both;"></div>
+  </div>
+
+</div>
+</section>
+<script type="text/javascript">
+    $(function(){
+            $(window).scroll(function(){
+                
+                if(this.scrollY > 20  ){
+                    $(".hy-header").css('background','rgb(83, 188, 245)');
+                    $(".hy-header").addClass('header_shadow');
+                    $(".hy-header-title,.hy-header .icon").css("cssText","color: #fff !important");
+                }else{
+                    $(".hy-header").css('background','rgba(0, 0, 0, 0)');
+                    $(".hy-header").removeClass('header_shadow');
+                    $(".hy-header-title,.hy-header .icon").css("cssText","color: #fff");
+                        
+                }
+                
+            });
+            
+
+        })
+    
+</script>
+<style media="screen" type="text/css">
+.bottom-ul li {
+    float: left;
+    width: 16.6666666667%;
+    height: 3px;
+}
+ul.bottom-ul {
+    bottom: 0;
+    height: 3px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.zhiding {
+    clear: both;
+    padding: 0 0.34rem;
+    background-color: white;
+    width: 100%;
+}
+.zhidingx {
+    border-bottom: 1px solid #d4d9de;
+    padding: 10px;
+    color: #212222;
+}
+h2.qzztbtt {
+    font-weight: 400;
+    font-size: 15.5px;
+}
+p.bbplg {
+    width: 50%;
+    position: relative;
+    display: initial;
+	    margin: 0 10px;
+}
+</style>
+<!--{hook youlianm}-->
+<!--{hook tl_box_bottom}-->
+<!--{hook tlms_box_bottom}-->
+{include f}

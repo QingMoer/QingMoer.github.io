@@ -1,0 +1,86 @@
+<!--{hook t_m_forum_index_1}-->
+<div class="hy-canvas-left" style="overflow: hidden;">
+	<div id="iframe-forum-box">
+    	<div id="iframe-forum-top">
+    	<!--{hook t_m_forum_index_2}-->
+			<a href="{#WWW}">
+				<img class="logo" src="{#WWW}View/tlmsu_wall/logo.png" >
+		    </a>
+			<div>
+				{if !IS_LOGIN}
+				<div class="hy-btn-group">
+					<a href="{php HYBBS_URL('user','login')}" class="hy-btn hy-btn-sblue hy-btn-xs">{$_LANG['登录']}</a>
+					<a href="{php HYBBS_URL('user','add')}" ajax="true" pos="right" rgb="#f1f4f9" class="hy-btn hy-btn-xs">{$_LANG['注册']}</a>
+					<!--{hook t_m_forum_index_33}-->
+				</div>
+				{else}
+				<a href="{php HYBBS_URL('my',$user['user']);}" >
+				<img src="{#WWW}{$user.avatar.b}" width="100" height="100" class="img-circle hy-btn-group">
+				</a>
+				<div class="info-list">
+				<!--{hook t_m_forum_index_5}-->
+					<span>{$_LANG['关注']} <i>{$user.follow}</i></span>
+					<span>{$_LANG['粉丝']} <i>{$user.fans}</i></span>
+					<span>{$_LANG['金币']} <i>{$user.gold}</i></span>
+					<!--{hook t_m_forum_index_6}-->
+				</div>
+				<div class="hy-btn-group" style="margin-top:10px">
+				<!--{hook t_m_forum_index_7}-->
+					<a href="{php HYBBS_URL('my',$user['user']);}"  class="hy-btn hy-btn-warning hy-btn-xs">{$_LANG['空间']}</a>
+					<!--{hook zg_sign_m_hook}-->{hook m_xso_sign_plugin_view}
+					<a href="javascript:void(0);" class="hy-btn hy-btn-danger hy-btn-xs" onclick="tog_friend_box()">{$_LANG['好友']}</a>
+				<!--{hook t_m_forum_index_8}-->
+				</div>
+				{/if}
+			</div>
+		</div>
+		<div class="hy-list iframe_forum" style="overflow-y: auto;">
+
+
+		    <!--{hook t_m_forum_index_3}-->
+		   
+    
+    <a href="{#WWW}" {if ACTION_NAME=='Index' || ACTION_NAME=='New' || ACTION_NAME=='Btime'} class="a"{/if}>
+        <span class="iconfont icon-shouye" style="margin-right: 10px;color: #F37D7D !important;font-size: 13px;"></span>社区首页<p class="size_12 cg">Home</p>
+    </a>
+		   <a href="{php HYBBS_URL('forum')}" {if ACTION_NAME=='Forum'} class="a"{/if}>
+        <span class="iconfont icon-shequ1" style="margin-right: 10px;color: #FFB300 !important;font-size: 13px;"></span>板块分类<p class="size_12 cg">Market</p>
+    </a>
+    <a href="{php HYBBS_URL('post')}"><span class="iconfont icon-fatie_x" style="margin-right: 10px;color: #9DCA08 !important;font-size: 13px;"></span>我要发帖<p class="size_12 cg">Post</p></a>
+		    <!--{hook t_m_forum_index_4}-->
+		    {if IS_LOGIN}
+			<a href="{php HYBBS_URL('my',$user['user']);}" ><span class="iconfont icon-1kongjian" style="color: #DA99DB !important;margin-right: 10px;font-size: 13px;"></span>我的空间<p class="size_12 cg">UserOut</p></a>
+    <a href="{if IS_LOGIN}javascript:void(0);{else}{php HYBBS_URL('user','login')}{/if}" {if IS_LOGIN}onclick="tog_friend_box()"{else} ajax="true" pos="right" rgb="#f1f4f9"{/if}>
+        <span class="iconfont icon-xiaoxi" style="margin-right: 10px;color: #91B9EB !important;font-size: 13px;"></span>我的消息{if IS_LOGIN}{if $user['mess']}<i id="hy-mess">(<em class="hy-font-warning">{$user.mess}</em>)</i>{/if}{/if}<p class="size_12 cg">News</p>
+    </a>
+    <span class="tl-xtitle" style="
+    margin-left: 38.5px;
+    margin-top: 7px;
+    position: absolute;
+    color: #7089a9;
+	font-size: 13px;
+">更换头像Head portrait</span>
+			<form class="form-horizontal" action="{php HYBBS_URL('user','ava');}" method="post" enctype="multipart/form-data" style="
+    margin-left: 14.5px;
+    margin-top: 11px;
+    font-size: 13px;
+">
+			<input type="file" class="iconfont icon-touxiang" style="outline: 0;border: none;width: 26px;height: 9px;font-size: 13px;color: #ffaaaa;" onchange="$(this).parent().submit();" name="photo">
+			</form>
+		<a href="{php HYBBS_URL('my',$user['user'],'op');}" style="
+    margin-top: -10px;
+">
+        <span class="icon icon-cog " style="color: #ffc000 !important;"></span>
+        <span class="tl-xtitle">{$_LANG['个人设置']}Set-up</span>
+    </a>{if NOW_UID=='1'}
+		    <a href="{#WWW}?admin"><span class="iconfont icon-guanlikehu" style="color: #1eacee !important;font-size: 13px; margin-right: 10px;"></span>后台管理<p class="size_12 cg">Administration
+</p></a>{/if}
+    </a>
+		    <a href="{php HYBBS_URL('user','out')}"><span class="icon icon-exit" style="color: #5cb37f !important;"></span>注销登录<p class="size_12 cg">UserOut</p></a>
+    {/if}
+      
+
+		</div>		
+
+	</div>
+</div>
